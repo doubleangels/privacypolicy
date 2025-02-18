@@ -14,47 +14,35 @@
       background-color: #f4f4f4;
       font-family: Arial, sans-serif;
     }
+    /* The heart shape using clip-path */
     .heart {
-      position: relative;
-      width: 50px;
-      height: 45px;
-      background: #e74c3c;
-      transform: rotate(-45deg);
+      width: 150px;
+      height: 150px;
+      background-color: #e74c3c;
+      /* Define the heart shape as a polygon */
+      clip-path: polygon(
+        50% 0%,   /* Top center */
+        100% 35%, /* Right “shoulder” */
+        80% 100%, /* Bottom right point */
+        20% 100%, /* Bottom left point */
+        0% 35%    /* Left “shoulder” */
+      );
       animation: pulse 1s infinite;
-    }
-    /* Create two circular "lobes" for the top of the heart */
-    .heart::before,
-    .heart::after {
-      content: "";
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      background: #e74c3c;
-      border-radius: 50%;
-    }
-    /* Left lobe */
-    .heart::before {
-      top: -25px;
-      left: 0;
-    }
-    /* Right lobe */
-    .heart::after {
-      top: -25px;
-      left: 25px;
+      /* Make sure scaling for the pulse is centered */
+      transform-origin: center center;
     }
 
-    /* Pulse animation */
     @keyframes pulse {
       0% {
-        transform: rotate(-45deg) scale(1);
+        transform: scale(1);
         opacity: 1;
       }
       50% {
-        transform: rotate(-45deg) scale(1.2);
+        transform: scale(1.2);
         opacity: 0.7;
       }
       100% {
-        transform: rotate(-45deg) scale(1);
+        transform: scale(1);
         opacity: 1;
       }
     }
