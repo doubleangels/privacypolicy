@@ -14,30 +14,48 @@
       background-color: #f4f4f4;
       font-family: Arial, sans-serif;
     }
-    .heartbeat {
+    .heart {
+      position: relative;
+      width: 100px;
+      height: 90px;
+      background: #e74c3c;
+      transform: rotate(-45deg);
+      animation: pulse 1s infinite;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
       width: 100px;
       height: 100px;
-      background-color: #e74c3c;
+      background: #e74c3c;
       border-radius: 50%;
-      animation: pulse 1s infinite;
+    }
+    .heart::before {
+      top: -50px;
+      left: 0;
+    }
+    .heart::after {
+      left: 50px;
+      top: 0;
     }
     @keyframes pulse {
       0% {
-        transform: scale(1);
+        transform: rotate(-45deg) scale(1);
         opacity: 1;
       }
       50% {
-        transform: scale(1.2);
+        transform: rotate(-45deg) scale(1.2);
         opacity: 0.7;
       }
       100% {
-        transform: scale(1);
+        transform: rotate(-45deg) scale(1);
         opacity: 1;
       }
     }
   </style>
 </head>
 <body>
-  <div class="heartbeat"></div>
+  <div class="heart"></div>
 </body>
 </html>
