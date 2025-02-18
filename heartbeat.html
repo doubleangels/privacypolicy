@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Heartbeat Monitor</title>
   <style>
     body {
@@ -16,29 +16,34 @@
     }
     .heart {
       position: relative;
-      width: 100px;
-      height: 90px;
+      width: 50px;
+      height: 45px;
       background: #e74c3c;
       transform: rotate(-45deg);
       animation: pulse 1s infinite;
     }
+    /* Create two circular "lobes" for the top of the heart */
     .heart::before,
     .heart::after {
       content: "";
       position: absolute;
-      width: 100px;
-      height: 100px;
+      width: 50px;
+      height: 50px;
       background: #e74c3c;
       border-radius: 50%;
     }
+    /* Left lobe */
     .heart::before {
-      top: -50px;
+      top: -25px;
       left: 0;
     }
+    /* Right lobe */
     .heart::after {
-      left: 50px;
-      top: 0;
+      top: -25px;
+      left: 25px;
     }
+
+    /* Pulse animation */
     @keyframes pulse {
       0% {
         transform: rotate(-45deg) scale(1);
