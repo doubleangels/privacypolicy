@@ -5,7 +5,8 @@ This repository contains the official **Terms of Service** and **Privacy Policy*
 ## Contents
 
 - **nextdns_terms.html**: The Terms of Service document outlining the rules and guidelines for using NextDNS Manager.
-- **nextdns.html**: The Privacy Policy detailing how user data is collected, used, and protected.
+- **nextdns.html**: The Privacy Policy detailing how user data is collected, used, and protected for the NextDNS Manager application.
+- **redact.html**: The Privacy Policy detailing how user data is collected, used, and protected for the Redact application.
 
 ## Purpose
 
