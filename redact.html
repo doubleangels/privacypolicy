@@ -4,170 +4,625 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Privacy Policy</title>
+    <title>Redact — Privacy Policy</title>
+    <meta name="description" content="Privacy Policy for Redact: Privacy & Metadata Remover. Redact processes all photos and videos on-device and collects no personal information." />
     <style>
+        :root {
+            --primary: #4285F4;
+            --primary-dark: #3367D6;
+            --accent: #00C853;
+            --ink: #1b1d22;
+            --ink-soft: #4a4e57;
+            --bg: #f4f6fa;
+            --card: #ffffff;
+            --border: #e4e7ee;
+            --chip-bg: #eef2fb;
+            --good-bg: #e8f9ee;
+            --good-border: #baeccb;
+            --warn-bg: #fff6e5;
+            --warn-border: #ffe3a3;
+            --code-bg: #f1f3f8;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --ink: #eef1f8;
+                --ink-soft: #b7bcc9;
+                --bg: #14161b;
+                --card: #1b1e25;
+                --border: #2b2f3a;
+                --chip-bg: #202537;
+                --good-bg: #0f2a1c;
+                --good-border: #1d5436;
+                --warn-bg: #2c2410;
+                --warn-border: #5a4a16;
+                --code-bg: #20242e;
+            }
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #f7f7f7;
-            color: #333;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.65;
+            padding: 2.5rem 1rem 4rem;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            background-color: #fff;
-            padding: 2rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        .wrap {
+            max-width: 840px;
+            margin: 0 auto;
         }
 
-        .container h1 {
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-            color: #484848;
+        header.hero {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.75rem;
         }
 
-        .container p {
-            margin-bottom: 1.2rem;
+        .mark {
+            flex: 0 0 auto;
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 16px rgba(66, 133, 244, 0.35);
         }
 
-        .container a {
-            color: #484848;
-            text-decoration: none;
-            transition: color 0.2s ease-in-out;
+        .mark svg {
+            width: 26px;
+            height: 26px;
         }
 
-        .container a:hover {
-            color: #0056d2;
-            text-decoration: underline;
+        header.hero h1 {
+            font-size: 1.55rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
         }
 
-        .container ul {
-            list-style: disc inside;
-            margin-bottom: 1.2rem;
-            padding-left: 1rem;
+        header.hero p {
+            margin-top: 0.15rem;
+            color: var(--ink-soft);
+            font-size: 0.95rem;
         }
 
-        .container li {
-            margin-bottom: 0.5rem;
+        .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.75rem;
         }
 
-        .container strong {
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: var(--chip-bg);
+            color: var(--primary-dark);
+            border: 1px solid var(--border);
+            padding: 0.3rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
             font-weight: 600;
         }
 
+        @media (prefers-color-scheme: dark) {
+            .chip { color: #9ec1ff; }
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.75rem;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+        }
+
+        .glance {
+            border-color: var(--good-border);
+            background: var(--good-bg);
+        }
+
+        .glance h2 {
+            font-size: 1.05rem;
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .glance ul {
+            list-style: none;
+            display: grid;
+            gap: 0.6rem;
+        }
+
+        .glance li {
+            display: flex;
+            gap: 0.6rem;
+            align-items: flex-start;
+            font-size: 0.95rem;
+        }
+
+        .glance li .tick {
+            flex: 0 0 auto;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.1rem;
+        }
+
+        nav.toc {
+            margin-bottom: 1.5rem;
+        }
+
+        nav.toc h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--ink-soft);
+            margin-bottom: 0.75rem;
+        }
+
+        nav.toc ol {
+            columns: 2;
+            column-gap: 1.5rem;
+            list-style: none;
+            counter-reset: toc;
+        }
+
+        nav.toc li {
+            counter-increment: toc;
+            margin-bottom: 0.45rem;
+            break-inside: avoid;
+            font-size: 0.9rem;
+        }
+
+        nav.toc li::before {
+            content: counter(toc) ". ";
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        nav.toc a {
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        nav.toc a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 1.6rem;
+            scroll-margin-top: 1.25rem;
+        }
+
+        section h2 {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.65rem;
+            letter-spacing: -0.01em;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            section h2 { color: #9ec1ff; }
+        }
+
+        section h3 {
+            font-size: 1rem;
+            margin: 1rem 0 0.4rem;
+            color: var(--ink);
+        }
+
+        p {
+            margin-bottom: 0.9rem;
+            font-size: 0.97rem;
+            color: var(--ink);
+        }
+
+        ul, ol.plain {
+            margin: 0 0 0.9rem 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+            font-size: 0.97rem;
+        }
+
+        a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        code {
+            background: var(--code-bg);
+            border-radius: 5px;
+            padding: 0.1rem 0.4rem;
+            font-size: 0.85em;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 640px;
+            font-size: 0.88rem;
+        }
+
+        thead th {
+            background: var(--chip-bg);
+            text-align: left;
+            padding: 0.65rem 0.8rem;
+            font-weight: 700;
+            color: var(--ink);
+            border-bottom: 1px solid var(--border);
+        }
+
+        tbody td {
+            padding: 0.65rem 0.8rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            color: var(--ink-soft);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody td:first-child {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.1rem 0.5rem;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .badge-off {
+            background: var(--good-bg);
+            border: 1px solid var(--good-border);
+            color: #1a7a40;
+        }
+
+        .badge-cond {
+            background: var(--warn-bg);
+            border: 1px solid var(--warn-border);
+            color: #8a6412;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .badge-off { color: #6fe39a; }
+            .badge-cond { color: #f0c764; }
+        }
+
+        .callout {
+            border-left: 4px solid var(--primary);
+            background: var(--chip-bg);
+            border-radius: 0 12px 12px 0;
+            padding: 0.9rem 1.1rem;
+            margin-bottom: 1rem;
+            font-size: 0.92rem;
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: var(--ink-soft);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--ink-soft);
+        }
+
         @media (max-width: 600px) {
-            .container {
-                padding: 1.5rem;
+            .card {
+                padding: 1.25rem;
+            }
+
+            nav.toc ol {
+                columns: 1;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Privacy Policy</h1>
-        <p>DoubleAngels built the Redact app as an Open Source app. This SERVICE is provided by DoubleAngels at no cost
-            and is intended for use as is.</p>
-        <p>This page is used to inform visitors regarding my policies with the collection, use, and disclosure of
-            Personal Information if anyone decided to use my Service.</p>
-        <p>If you choose to use my Service, then you agree to the collection and use of information in relation to this
-            policy. The Personal Information that I collect is used for providing and improving the Service. I will not
-            use or share your information with anyone except as described in this Privacy Policy.</p>
-        <p>The terms used in this Privacy Policy have the same meanings as in my Terms and Conditions, which are
-            accessible at Redact unless otherwise defined in this Privacy Policy.</p>
+    <div class="wrap">
+        <header class="hero">
+            <div class="mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L4 5v6c0 5.25 3.4 9.74 8 11 4.6-1.26 8-5.75 8-11V5l-8-3z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>
+                    <path d="M9 12.5l2.1 2.1L15.5 10" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div>
+                <h1>Privacy Policy — Redact</h1>
+                <p>Privacy &amp; Metadata Remover for Android · <code>com.doubleangels.redact</code></p>
+            </div>
+        </header>
 
-        <p><strong>Information Collection and Use</strong></p>
-        <p>For a better experience, while using my Service, I may require you to provide us with certain personally
-            identifiable information, including but not limited to NONE. The information that I request will be retained
-            on your device and is not collected by me in any way.</p>
-        <div>
-            <p>The app does use third-party services that may collect information used to identify you.</p>
-            <p>Link to the privacy policy of third-party service providers used by the app</p>
+        <div class="meta-row">
+            <span class="chip">Last updated: October 5, 2026</span>
+            <span class="chip">Open source (GPL-3.0)</span>
+            <span class="chip">No ads · No trackers</span>
+        </div>
+
+        <div class="card glance">
+            <h2>At a glance</h2>
             <ul>
-                <li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener noreferrer">Google
-                        Play Services</a></li>
-                <li><a href="https://sentry.io/privacy/" target="_blank" rel="noopener noreferrer">Sentry</a></li>
-                <li><a href="https://firebase.google.com/support/privacy" target="_blank"
-                        rel="noopener noreferrer">Google Firebase</a></li>
+                <li><span class="tick">✓</span><span>Redact does not collect, transmit, or sell any personal information. There is no account, no sign-in, and no backend server for your data.</span></li>
+                <li><span class="tick">✓</span><span>Every photo and video you clean, scan, or convert is processed <strong>entirely on your device</strong>. Nothing is uploaded, ever.</span></li>
+                <li><span class="tick">✓</span><span>Crash reporting (Sentry) is <strong>off by default</strong>. If you turn it on, only scrubbed, anonymized diagnostics are sent — never your media or file names.</span></li>
+                <li><span class="tick">✓</span><span>Redact contains no advertising SDK, no analytics SDK, and no Firebase or Google Play Services dependency of any kind.</span></li>
+                <li><span class="tick">✓</span><span>The full source code is public on <a href="https://github.com/doubleangels/redact" target="_blank" rel="noopener noreferrer">GitHub</a> so these claims can be independently verified.</span></li>
             </ul>
         </div>
 
-        <p><strong>Log Data</strong></p>
-        <p>I want to inform you that whenever you use my Service, in a case of an error in the app I collect data and
-            information (through third-party products) on your phone called Log Data. This Log Data may include
-            information such as your device Internet Protocol ("IP") address, device name, operating system version, the
-            configuration of the app when utilizing my Service, the time and date of your use of the Service, and other
-            statistics.</p>
+        <nav class="toc card" aria-label="Table of contents">
+            <h2>Contents</h2>
+            <ol>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#data-we-collect">Information We Collect</a></li>
+                <li><a href="#permissions">Permissions Explained</a></li>
+                <li><a href="#crash-reporting">Optional Crash Reporting</a></li>
+                <li><a href="#third-party">Third-Party Components</a></li>
+                <li><a href="#storage">Where Your Files Go</a></li>
+                <li><a href="#security">Security</a></li>
+                <li><a href="#other-sites">Links to Other Sites</a></li>
+                <li><a href="#children">Children's Privacy</a></li>
+                <li><a href="#rights">Your Rights (GDPR, CCPA/CPRA)</a></li>
+                <li><a href="#changes">Changes to This Policy</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ol>
+        </nav>
 
-        <p><strong>Cookies</strong></p>
-        <p>Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These
-            are sent to your browser from the websites that you visit and are stored on your device's internal memory.
-        </p>
-        <p>This Service does not use these "cookies" explicitly. However, the app may use third-party code and libraries
-            that use "cookies" to collect information and improve their services. You have the option to either accept
-            or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse my
-            cookies, you may not be able to use some portions of this Service.</p>
+        <section id="overview">
+            <h2>1. Overview</h2>
+            <p>Redact is an open-source Android app built by DoubleAngels that removes EXIF and container metadata (GPS location, device details, timestamps, camera settings, and similar hidden data) from photos and videos, lets you inspect that metadata before sharing, and converts media formats — all without leaving your device.</p>
+            <p>This Privacy Policy explains, in plain language, exactly what Redact does and does not do with your data. Because Redact is designed around local-only processing, the short version is simple: <strong>the app doesn't want your data and doesn't collect it.</strong> The rest of this page explains why, in detail, including every permission the app requests and every third-party library it ships with.</p>
+        </section>
 
-        <p><strong>Service Providers</strong></p>
-        <p>I may employ third-party companies and individuals due to the following reasons:</p>
-        <ul>
-            <li>To facilitate my Service;</li>
-            <li>To provide the Service on my behalf;</li>
-            <li>To perform Service-related services; or</li>
-            <li>To assist us in analyzing how my Service is used.</li>
-        </ul>
-        <p>I want to inform users of this Service that these third parties have access to their Personal Information.
-            The reason is to perform the tasks assigned to them on my behalf. However, they are obligated not to
-            disclose or use the information for any other purpose.</p>
+        <section id="data-we-collect">
+            <h2>2. Information We Collect</h2>
+            <p><strong>We collect none of your personal information.</strong> Redact has no account system, no sign-in, no registration, and no server that stores or receives your photos, videos, metadata, or identity. You can verify this directly: the <code>INTERNET</code> permission is the only one that lets the app reach the network at all, and it is used for exactly one optional, opt-in purpose described in Section 4.</p>
+            <p>Specifically, Redact does <strong>not</strong>:</p>
+            <ul>
+                <li>Upload your photos, videos, or any media file to any server, for any feature;</li>
+                <li>Read, log, or transmit the EXIF/GPS metadata it scans or removes;</li>
+                <li>Require or collect your name, email address, phone number, or any account identifier;</li>
+                <li>Use advertising identifiers, behavioral analytics, or any ad SDK;</li>
+                <li>Track you across apps or websites, or build any kind of profile about you.</li>
+            </ul>
+            <p>The only data that ever leaves your device is the optional, anonymized crash-diagnostic data described in Section 4 — and only if you explicitly turn that setting on.</p>
+        </section>
 
-        <p><strong>Security</strong></p>
-        <p>I value your trust in providing us your Personal Information, thus I am striving to use commercially
-            acceptable means of protecting it. But remember that no method of transmission over the internet, or method
-            of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.</p>
+        <section id="permissions">
+            <h2>3. Permissions Explained</h2>
+            <p>Android requires apps to declare permissions up front, but declaring a permission does not mean Redact uses it to collect data about you. Here is exactly what each permission is for and whether it's required:</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Permission</th>
+                            <th>What it's used for</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>READ_EXTERNAL_STORAGE</td>
+                            <td>Lets the system gallery picker show your photos/videos on Android 12 and earlier, where the modern document picker isn't available.</td>
+                            <td><span class="badge badge-cond">Android 12 and below only</span></td>
+                        </tr>
+                        <tr>
+                            <td>READ_MEDIA_IMAGES / READ_MEDIA_VIDEO</td>
+                            <td>Optional alternative to Android's system document picker, which Redact uses by default on Android 13+ and which needs no media permission at all.</td>
+                            <td><span class="badge badge-off">Optional</span></td>
+                        </tr>
+                        <tr>
+                            <td>READ_MEDIA_VISUAL_USER_SELECTED</td>
+                            <td>Lets you (on Android 14+) grant Redact access to only specific photos/videos you choose, instead of your entire library.</td>
+                            <td><span class="badge badge-off">Optional</span></td>
+                        </tr>
+                        <tr>
+                            <td>ACCESS_MEDIA_LOCATION</td>
+                            <td>Lets the Scan screen display the exact GPS coordinates embedded in a file, so you can see what's there. Not required to remove that same GPS data in Clean.</td>
+                            <td><span class="badge badge-off">Optional</span></td>
+                        </tr>
+                        <tr>
+                            <td>POST_NOTIFICATIONS</td>
+                            <td>Shows progress and completion notifications for Clean/Convert jobs.</td>
+                            <td><span class="badge badge-off">Optional, off by default</span></td>
+                        </tr>
+                        <tr>
+                            <td>FOREGROUND_SERVICE / FOREGROUND_SERVICE_MEDIA_PROCESSING</td>
+                            <td>Keeps a long-running Clean or Convert batch job alive and shows its progress notification when notifications are enabled.</td>
+                            <td><span class="badge badge-cond">Used only if notifications are on</span></td>
+                        </tr>
+                        <tr>
+                            <td>INTERNET</td>
+                            <td>The only permission that allows network access at all. Used exclusively to send scrubbed crash/error diagnostics to Sentry, and only when you turn on Send Crash Reports in Settings.</td>
+                            <td><span class="badge badge-cond">Used only for opt-in crash reporting</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Redact never requests broad, standing access to your entire media library by default. On Android 13+, the app's primary file-selection method is Android's built-in document/photo picker, which hands Redact only the specific files you choose — the app never sees the rest of your gallery.</p>
+        </section>
 
-        <p><strong>Links to Other Sites</strong></p>
-        <p>This Service may contain links to other sites. If you click on a third-party link, you will be directed to
-            that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review
-            the Privacy Policy of these websites. I have no control over and assume no responsibility for the content,
-            privacy policies, or practices of any third-party sites or services.</p>
+        <section id="crash-reporting">
+            <h2>4. Optional Crash Reporting</h2>
+            <p>Redact includes an optional crash and error reporting feature powered by <a href="https://sentry.io" target="_blank" rel="noopener noreferrer">Sentry</a>. It is controlled by a single setting — <strong>Send Crash Reports</strong> — and is <strong>off by default</strong>. Nothing is sent to Sentry, and Sentry's SDK is not even initialized, unless you explicitly switch this setting on.</p>
+            <p>When you turn it on, Redact applies the following safeguards before anything leaves your device:</p>
+            <ul>
+                <li><strong>No PII by default:</strong> the SDK's default-PII collection is explicitly disabled (<code>sendDefaultPii = false</code>), and broad device-context and automatic-breadcrumb collection are turned off.</li>
+                <li><strong>No screenshots or UI capture:</strong> screenshot attachment and view-hierarchy attachment are disabled, so a crash can never capture an image of what was on screen.</li>
+                <li><strong>Automatic scrubbing:</strong> before any event, log, metric, or breadcrumb is sent, Redact's own scrubbing layer strips <code>content://</code> and <code>file://</code> URIs, filesystem paths, GPS coordinate pairs and latitude/longitude fields, and file names from every message, tag, and stack frame. These patterns are redacted even in error messages generated deep inside system or library code.</li>
+                <li><strong>Allow-listed tags only:</strong> custom diagnostic tags are restricted to a fixed, reviewed list (for example <code>operation_type</code>, <code>mime_type</code>, <code>processing_success</code>, <code>video_width</code>) — arbitrary free-text values are never attached as tags.</li>
+                <li><strong>Your media is never touched:</strong> Sentry has no access to the photos or videos you process; only device model, OS version, app version, a scrubbed stack trace, and the allow-listed tags above may be included.</li>
+            </ul>
+            <p>You can turn crash reporting off again at any time in Settings; doing so immediately stops any further data from being sent. Diagnostic data sent to Sentry is governed by <a href="https://sentry.io/privacy/" target="_blank" rel="noopener noreferrer">Sentry's own Privacy Policy</a>.</p>
+        </section>
 
-        <p><strong>Children's Privacy</strong></p>
-        <div>
-            <p>These Services do not address anyone under the age of 13. I do not knowingly collect personally
-                identifiable information from children under 13 years of age. In the case I discover that a child under
-                13 has provided me with personal information, I immediately delete this from my servers. If you are a
-                parent or guardian and you are aware that your child has provided me with personal information, please
-                contact me so that I will be able to do the necessary actions.</p>
-        </div>
-        <h2 style="margin-top: 1.5rem; font-size: 1.4rem; color: #484848;">GDPR Data Protection Rights</h2>
-        <p>
-            If you are located in the European Economic Area (EEA), you have certain data protection rights under the
-            GDPR. These include the right to access, correct, update, or request deletion of your personal data. You
-            also have the right to object to or restrict certain processing of your data, as well as the right to data
-            portability.
-        </p>
-        <p>
-            If you would like to exercise any of these rights or have any questions about how your personal data is
-            handled, please contact me at
-            <a href="mailto:jzgm2llm@addy.io">jzgm2llm@addy.io</a>. I will do my best to respond to your
-            request in accordance with applicable data protection laws.
-        </p>
+        <section id="third-party">
+            <h2>5. Third-Party Components</h2>
+            <p>Redact is built on a small number of open-source libraries. Most of them run entirely on your device and have no ability to send data anywhere — they are listed here for full transparency, along with a link to the publisher's privacy policy where one exists.</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Publisher</th>
+                            <th>What it does in Redact</th>
+                            <th>Data it can send off-device</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="https://sentry.io" target="_blank" rel="noopener noreferrer">Sentry Android SDK</a></td>
+                            <td><a href="https://sentry.io/privacy/" target="_blank" rel="noopener noreferrer">Functional Software, Inc. (Sentry)</a></td>
+                            <td>Optional, opt-in crash and performance diagnostics (see Section 4).</td>
+                            <td>Scrubbed device/app info and stack traces — only if you enable Send Crash Reports.</td>
+                        </tr>
+                        <tr>
+                            <td>AndroidX (Activity, AppCompat, ConstraintLayout, ExifInterface, Fragment, Lifecycle&nbsp;ViewModel)</td>
+                            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google / Android Open Source Project</a></td>
+                            <td>Core UI framework and on-device EXIF read/write support.</td>
+                            <td>None — these are bundled code libraries, not services; they do not independently transmit data.</td>
+                        </tr>
+                        <tr>
+                            <td>Material Components for Android</td>
+                            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google</a></td>
+                            <td>The visual design system (buttons, navigation, theming) rendered on-device.</td>
+                            <td>None.</td>
+                        </tr>
+                        <tr>
+                            <td>Media3 (Common, Effect, Transformer)</td>
+                            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google (AndroidX / ExoPlayer project)</a></td>
+                            <td>Local video transcoding, remuxing, and metadata-safe format conversion for Clean and Convert.</td>
+                            <td>None — all processing happens on-device.</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://github.com/bumptech/glide" target="_blank" rel="noopener noreferrer">Glide</a></td>
+                            <td>BumpTech (open source)</td>
+                            <td>Loads and renders thumbnails of your locally selected photos inside the app.</td>
+                            <td>None — reads only local files you've already selected; no network calls of its own.</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://commons.apache.org/proper/commons-imaging/" target="_blank" rel="noopener noreferrer">Apache Commons Imaging</a></td>
+                            <td><a href="https://www.apache.org/foundation/policies/privacy.html" target="_blank" rel="noopener noreferrer">Apache Software Foundation</a></td>
+                            <td>Lossless JPEG EXIF stripping used by the Clean feature.</td>
+                            <td>None — a local parsing library with no network access.</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://square.github.io/leakcanary/" target="_blank" rel="noopener noreferrer">LeakCanary</a></td>
+                            <td>Block, Inc. (Square, open source)</td>
+                            <td>Memory-leak detection during development only.</td>
+                            <td>None — included only in debug builds and <strong>not shipped in the Google Play release APK.</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Google Play Store (distribution)</td>
+                            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google</a></td>
+                            <td>Installs, updates, and verifies the app if you downloaded it from Google Play.</td>
+                            <td>Handled entirely by the Play Store platform under Google's own Privacy Policy — not by code inside Redact.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Redact does <strong>not</strong> use Firebase, Google Analytics, any Google Play Services SDK, AdMob, or any other advertising or analytics library. If a dependency is ever added or removed in a future release, this table will be updated to match — you can always check the current list yourself in the app's <a href="https://github.com/doubleangels/redact/blob/main/gradle/libs.versions.toml" target="_blank" rel="noopener noreferrer">public build configuration</a>.</p>
+        </section>
 
-        <p><strong>Changes to This Privacy Policy</strong></p>
-        <p>I may update my Privacy Policy from time to time. Thus, you are advised to review this page periodically for
-            any changes. I will notify you of any changes by posting the new Privacy Policy on this page.</p>
-        <p>This policy is effective as of 2024-02-15</p>
+        <section id="storage">
+            <h2>6. Where Your Files Go</h2>
+            <p>Cleaned and converted files are saved to <code>Pictures/Redact</code> or <code>Movies/Redact</code> in your device's own MediaStore — ordinary folders you control, back up, or delete like any other photo or video on your phone. Redact never relocates these files off your device.</p>
+            <p>When you share a file into Redact from another app, a temporary stripped copy is created in the app's private cache, handed to your chosen share target, and then deleted shortly afterward. Settings let you optionally overwrite temporary files (1, 3, or 7 passes) before deletion for extra assurance, though this has limited effect on modern flash storage, as noted in the app itself. <strong>Clear Cache on Startup</strong> automatically removes cache files older than 24 hours, and you can clear temporary files manually from Settings at any time.</p>
+        </section>
 
-        <p><strong>Contact Us</strong></p>
-        <p>If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at <a
-                href="mailto:jzgm2llm@addy.io">jzgm2llm@addy.io</a>.</p>
+        <section id="security">
+            <h2>7. Security</h2>
+            <p>Because Redact processes your media locally and has no account system or backend database, there is no central server holding your photos, videos, or personal information for an attacker to compromise. The app's network access is limited to the single opt-in diagnostic channel described in Section 4, which uses HTTPS.</p>
+            <p>The app disables cleartext network traffic entirely (<code>usesCleartextTraffic="false"</code>) and disables Android's auto-backup of app data (<code>allowBackup="false"</code>) so app state can't be extracted through device backups. Because the full source code is public, anyone can independently audit these claims rather than take our word for it.</p>
+        </section>
+
+        <section id="other-sites">
+            <h2>8. Links to Other Sites</h2>
+            <p>This policy, the Redact GitHub repository, and the Google Play Store listing may link to external sites (such as GitHub, Sentry, or Google's own policies). We have no control over and assume no responsibility for the content, privacy practices, or terms of any third-party site. We encourage you to review the privacy policy of any site you visit.</p>
+        </section>
+
+        <section id="children">
+            <h2>9. Children's Privacy</h2>
+            <p>Redact does not collect personal information from anyone, regardless of age, because it does not collect personal information at all. The app contains no account creation, no chat or social features, and no mechanism for a user of any age to submit personal data to us. If you are a parent or guardian with questions about your child's use of Redact, you're welcome to contact us using the details in Section 12.</p>
+        </section>
+
+        <section id="rights">
+            <h2>10. Your Rights (GDPR, CCPA/CPRA)</h2>
+            <h3>European Economic Area (GDPR)</h3>
+            <p>If you are located in the EEA, UK, or Switzerland, data protection law gives you rights to access, correct, delete, restrict, or port your personal data, and to object to its processing. Because Redact does not collect or process personal data about you in the first place, most of these rights have nothing to act on. If you believe any data about you has reached us — for example through a message you sent — contact us and we will address it promptly.</p>
+            <h3>California (CCPA/CPRA)</h3>
+            <p>Redact does not sell or share personal information, and does not collect personal information as defined by the CCPA/CPRA in the ordinary course of operating the app. Accordingly, there is no sale or sharing to opt out of. California residents may still contact us with any privacy question using the details below.</p>
+            <div class="callout">
+                To exercise any privacy right or ask a question about how data is handled, email <a href="mailto:jzgm2llm@addy.io">jzgm2llm@addy.io</a>. We will respond in line with applicable data protection laws.
+            </div>
+        </section>
+
+        <section id="changes">
+            <h2>11. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time, for example when a dependency changes or a new optional feature is added. Any update will be posted on this page with a revised "Last updated" date at the top. We encourage you to review this page periodically, especially before enabling optional features such as crash reporting.</p>
+            <p>This policy was last updated on <strong>October 5, 2026</strong>.</p>
+        </section>
+
+        <section id="contact">
+            <h2>12. Contact</h2>
+            <p>Questions, feedback, or privacy requests about Redact can be sent to <a href="mailto:jzgm2llm@addy.io">jzgm2llm@addy.io</a>, or filed as an issue on <a href="https://github.com/doubleangels/redact/issues" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+        </section>
+
+        <footer>
+            <p>Redact is free, open source, and ad-free. Source code: <a href="https://github.com/doubleangels/redact" target="_blank" rel="noopener noreferrer">github.com/doubleangels/redact</a></p>
+        </footer>
     </div>
 </body>
 
