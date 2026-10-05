@@ -771,7 +771,7 @@
                     </table>
                 </div>
                 <p>By default, Redact never asks for broad, standing access to your whole media library. On Android 13 and up, it mainly uses Android's own built-in file picker, which only hands over the exact files you choose. Everything else in your gallery stays out of sight, as far as the app is concerned.</p>
-                <p>You're always in the driver's seat here. Head to <strong>Apps &gt; Redact &gt; Permissions</strong> in your phone's Settings any time to see what's been granted and take any of it back. Turning off an optional permission just quietly disables the one feature that needed it. Everything else in Redact keeps working normally.</p>
+                <p>You're always in control here. Head to <strong>Apps &gt; Redact &gt; Permissions</strong> in your phone's Settings any time to see what's been granted and take any of it back. Turning off an optional permission just disables the one feature that needed it. Everything else in Redact keeps working normally.</p>
             </div>
         </details>
 
@@ -792,10 +792,10 @@
                 <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </summary>
             <div class="section-body">
-                <p>If you ever want to help us catch bugs, Redact has an optional crash-reporting feature powered by a service called <a href="https://sentry.io" target="_blank" rel="noopener noreferrer">Sentry</a>. It lives behind a single setting, <strong>Send Crash Reports</strong>, and it starts <strong>off</strong>. Until you flip that switch yourself, nothing is sent anywhere, Sentry's code doesn't even wake up.</p>
+                <p>If you ever want to help us catch bugs, Redact has an optional crash-reporting feature powered by a service called <a href="https://sentry.io" target="_blank" rel="noopener noreferrer">Sentry</a>. It lives behind a single setting, <strong>Send Crash Reports</strong>, and it starts <strong>off</strong>. Until you switch it on yourself, nothing is sent anywhere, Sentry's SDK isn't even initialized.</p>
                 <p>If you do turn it on, here's everything we do to protect your privacy before anything leaves your phone.</p>
                 <ul>
-                    <li><strong>No personal info by default:</strong> we've explicitly turned off the SDK's default personal-data collection (<code>sendDefaultPii = false</code>), along with broad device snooping and automatic activity tracking.</li>
+                    <li><strong>No personal info by default:</strong> we've explicitly turned off the SDK's default personal-data collection (<code>sendDefaultPii = false</code>), along with broad device-context collection and automatic activity tracking.</li>
                     <li><strong>No screenshots, ever:</strong> screenshot and screen-layout capture are disabled, so a crash can never grab an image of whatever was on your screen.</li>
                     <li><strong>Automatic scrubbing:</strong> before anything gets sent, our own filter strips out <code>content://</code> and <code>file://</code> paths, GPS coordinates, and file names from every message and error trace, even ones generated deep inside Android's own system code.</li>
                     <li><strong>Only pre-approved labels:</strong> diagnostic tags are limited to a short, reviewed list (things like <code>operation_type</code> or <code>video_width</code>), never open-ended text that could accidentally contain something personal.</li>
@@ -1058,7 +1058,7 @@
         </details>
 
         <footer>
-            <p>Redact is free, open source, and ad-free, built by someone who'd rather you trust the app than trust a promise. Source code: <a href="https://github.com/doubleangels/redact" target="_blank" rel="noopener noreferrer">github.com/doubleangels/redact</a></p>
+            <p>Redact is free, open source, and ad-free, so every claim on this page can be checked against the actual code. Source code: <a href="https://github.com/doubleangels/redact" target="_blank" rel="noopener noreferrer">github.com/doubleangels/redact</a></p>
         </footer>
     </div>
 
