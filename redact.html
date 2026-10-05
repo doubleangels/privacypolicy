@@ -379,8 +379,9 @@
             <ul>
                 <li><span class="tick">✓</span><span>Redact does not collect, transmit, or sell any personal information. There is no account, no sign-in, and no backend server for your data.</span></li>
                 <li><span class="tick">✓</span><span>Every photo and video you clean, scan, or convert is processed <strong>entirely on your device</strong>. Nothing is uploaded, ever.</span></li>
+                <li><span class="tick">✓</span><span>Redact never requests camera, microphone, contacts, or real-time location access. It has no permission to see, hear, or track you, by design rather than just by policy.</span></li>
                 <li><span class="tick">✓</span><span>Crash reporting (Sentry) is <strong>off by default</strong>. If you turn it on, only scrubbed, anonymized diagnostics are sent, and your media and file names are never included.</span></li>
-                <li><span class="tick">✓</span><span>Redact contains no advertising SDK, no analytics SDK, and no Firebase or Google Play Services dependency of any kind.</span></li>
+                <li><span class="tick">✓</span><span>Redact contains no advertising SDK, no analytics SDK, and no Firebase or Google Play Services dependency of any kind. Nothing is ever sold or shared with data brokers.</span></li>
                 <li><span class="tick">✓</span><span>The full source code is public on <a href="https://github.com/doubleangels/redact" target="_blank" rel="noopener noreferrer">GitHub</a> so these claims can be independently verified.</span></li>
             </ul>
         </div>
@@ -389,15 +390,19 @@
             <h2>Contents</h2>
             <ol>
                 <li><a href="#overview">Overview</a></li>
+                <li><a href="#who-we-are">Who We Are</a></li>
                 <li><a href="#data-we-collect">Information We Collect</a></li>
                 <li><a href="#permissions">Permissions Explained</a></li>
+                <li><a href="#notifications">Push Notifications</a></li>
                 <li><a href="#crash-reporting">Optional Crash Reporting</a></li>
                 <li><a href="#third-party">Third-Party Components</a></li>
+                <li><a href="#tracking">Advertising and Tracking</a></li>
                 <li><a href="#storage">Where Your Files Go</a></li>
                 <li><a href="#security">Security</a></li>
                 <li><a href="#other-sites">Links to Other Sites</a></li>
                 <li><a href="#children">Children's Privacy</a></li>
-                <li><a href="#rights">Your Rights (GDPR, CCPA/CPRA)</a></li>
+                <li><a href="#dnt">Do Not Track Signals</a></li>
+                <li><a href="#rights">Your Rights</a></li>
                 <li><a href="#changes">Changes to This Policy</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ol>
@@ -406,12 +411,18 @@
         <section id="overview">
             <h2>1. Overview</h2>
             <p>Redact is an open-source Android app built by DoubleAngels that removes EXIF and container metadata (GPS location, device details, timestamps, camera settings, and similar hidden data) from photos and videos, lets you inspect that metadata before sharing, and converts media formats, all without leaving your device.</p>
-            <p>This Privacy Policy explains, in plain language, exactly what Redact does and does not do with your data. Because Redact is designed around local-only processing, the short version is simple: <strong>the app doesn't want your data and doesn't collect it.</strong> The rest of this page explains why, in detail, including every permission the app requests and every third-party library it ships with.</p>
+            <p>This Privacy Policy explains, in plain language, exactly what Redact does and does not do with your data. Because Redact is designed around local-only processing, the short version is simple: <strong>the app doesn't want your data and doesn't collect it.</strong> The rest of this page explains why, in detail, including every permission the app requests, every third-party library it ships with, and the rights available to you under applicable privacy law.</p>
+        </section>
+
+        <section id="who-we-are">
+            <h2>2. Who We Are</h2>
+            <p>Redact is developed and published by DoubleAngels, an independent developer. DoubleAngels does not operate a company that buys or sells personal data, does not run an advertising business, and does not maintain any server that stores your photos, videos, or identity. For the single, opt-in category of diagnostic data described in Section 6, DoubleAngels acts as the data controller under applicable data protection law.</p>
+            <p>You can reach DoubleAngels directly using the contact details in Section 16, read every line of Redact's source code on <a href="https://github.com/doubleangels/redact" target="_blank" rel="noopener noreferrer">GitHub</a>, and review this policy's own revision history, since it is published from that same public repository.</p>
         </section>
 
         <section id="data-we-collect">
-            <h2>2. Information We Collect</h2>
-            <p><strong>We collect none of your personal information.</strong> Redact has no account system, no sign-in, no registration, and no server that stores or receives your photos, videos, metadata, or identity. You can verify this directly, since the <code>INTERNET</code> permission is the only one that lets the app reach the network at all, and it is used for exactly one optional, opt-in purpose described in Section 4.</p>
+            <h2>3. Information We Collect</h2>
+            <p><strong>We collect none of your personal information.</strong> Redact has no account system, no sign-in, no registration, and no server that stores or receives your photos, videos, metadata, or identity. You can verify this directly, since the <code>INTERNET</code> permission is the only one that lets the app reach the network at all, and it is used for exactly one optional, opt-in purpose described in Section 6.</p>
             <p>Specifically, Redact never does any of the following.</p>
             <ul>
                 <li>Upload your photos, videos, or any media file to any server, for any feature.</li>
@@ -420,11 +431,69 @@
                 <li>Use advertising identifiers, behavioral analytics, or any ad SDK.</li>
                 <li>Track you across apps or websites, or build any kind of profile about you.</li>
             </ul>
-            <p>The only data that ever leaves your device is the optional, anonymized crash-diagnostic data described in Section 4, and only if you explicitly turn that setting on.</p>
+            <p>The only data that ever leaves your device is the optional, anonymized crash-diagnostic data described in Section 6, and only if you explicitly turn that setting on.</p>
+
+            <h3>Categories of data we never collect</h3>
+            <p>For full transparency, here is an explicit list of common personal data categories and whether Redact collects them. The answer is the same for every row.</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Collected by Redact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Name, email address, phone number, or account identifiers</td>
+                            <td><span class="badge badge-off">Never</span></td>
+                        </tr>
+                        <tr>
+                            <td>Precise real-time location (device GPS, Wi-Fi, or cell positioning)</td>
+                            <td><span class="badge badge-off">Never, see note below</span></td>
+                        </tr>
+                        <tr>
+                            <td>Payment or financial information</td>
+                            <td><span class="badge badge-off">Never, the app is free with no purchases</span></td>
+                        </tr>
+                        <tr>
+                            <td>Biometric data (face, fingerprint, voice)</td>
+                            <td><span class="badge badge-off">Never</span></td>
+                        </tr>
+                        <tr>
+                            <td>Camera or microphone input</td>
+                            <td><span class="badge badge-off">Never, not a requested permission</span></td>
+                        </tr>
+                        <tr>
+                            <td>Contacts, calendar, or call log</td>
+                            <td><span class="badge badge-off">Never</span></td>
+                        </tr>
+                        <tr>
+                            <td>Health or fitness data</td>
+                            <td><span class="badge badge-off">Never</span></td>
+                        </tr>
+                        <tr>
+                            <td>Browsing or search history</td>
+                            <td><span class="badge badge-off">Never</span></td>
+                        </tr>
+                        <tr>
+                            <td>Advertising identifiers (Android Advertising ID)</td>
+                            <td><span class="badge badge-off">Never</span></td>
+                        </tr>
+                        <tr>
+                            <td>Device identifiers such as IMEI or serial number</td>
+                            <td><span class="badge badge-off">Never</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="callout">
+                A note on location: the GPS coordinates Redact can display in Scan or remove in Clean are metadata already embedded inside a photo or video file by the camera that captured it. That is different from device location tracking. Redact does not use your phone's location sensors to find out where you currently are, and it does not request the <code>ACCESS_FINE_LOCATION</code> or <code>ACCESS_COARSE_LOCATION</code> permissions that would allow that.
+            </div>
         </section>
 
         <section id="permissions">
-            <h2>3. Permissions Explained</h2>
+            <h2>4. Permissions Explained</h2>
             <p>Android requires apps to declare permissions up front, but declaring a permission does not mean Redact uses it to collect data about you. Here is exactly what each permission is for and whether it's required:</p>
             <div class="table-wrap">
                 <table>
@@ -475,10 +544,17 @@
                 </table>
             </div>
             <p>Redact never requests broad, standing access to your entire media library by default. On Android 13+, the app's primary file-selection method is Android's built-in document/photo picker, which hands Redact only the specific files you choose. The app never sees the rest of your gallery.</p>
+            <p>Every permission Redact has ever been granted can be reviewed and revoked at any time from Android's own Settings app, under <strong>Apps &gt; Redact &gt; Permissions</strong>. Revoking an optional permission simply disables the feature it supports; Redact continues to work for everything else.</p>
+        </section>
+
+        <section id="notifications">
+            <h2>5. Push Notifications</h2>
+            <p>Redact can show local notifications for job progress and completion, controlled by the <strong>Notifications</strong> setting, which is <strong>off by default</strong>. These are ordinary Android notifications generated on your device by the app itself through a local foreground service. Nothing about them is pushed from a remote server.</p>
+            <p>Redact does not use Firebase Cloud Messaging or any other push notification service, has no server capable of sending you a push message, and never registers a device token, push token, or advertising identifier anywhere for this or any other purpose. You can also mute or customize Redact's notification channels at any time from Android's own Settings app, independently of the in-app toggle.</p>
         </section>
 
         <section id="crash-reporting">
-            <h2>4. Optional Crash Reporting</h2>
+            <h2>6. Optional Crash Reporting</h2>
             <p>Redact includes an optional crash and error reporting feature powered by <a href="https://sentry.io" target="_blank" rel="noopener noreferrer">Sentry</a>. It is controlled by a single setting, <strong>Send Crash Reports</strong>, and is <strong>off by default</strong>. Nothing is sent to Sentry, and Sentry's SDK is not even initialized, unless you explicitly switch this setting on.</p>
             <p>When you turn it on, Redact applies the following safeguards before anything leaves your device:</p>
             <ul>
@@ -492,7 +568,7 @@
         </section>
 
         <section id="third-party">
-            <h2>5. Third-Party Components</h2>
+            <h2>7. Third-Party Components</h2>
             <p>Redact is built on a small number of open-source libraries. Most of them run entirely on your device and have no ability to send data anywhere. They are listed here for full transparency, along with a link to the publisher's privacy policy where one exists.</p>
             <div class="table-wrap">
                 <table>
@@ -508,7 +584,7 @@
                         <tr>
                             <td><a href="https://sentry.io" target="_blank" rel="noopener noreferrer">Sentry Android SDK</a></td>
                             <td><a href="https://sentry.io/privacy/" target="_blank" rel="noopener noreferrer">Functional Software, Inc. (Sentry)</a></td>
-                            <td>Optional, opt-in crash and performance diagnostics (see Section 4).</td>
+                            <td>Optional, opt-in crash and performance diagnostics (see Section 6).</td>
                             <td>Scrubbed device/app info and stack traces, only if you enable Send Crash Reports.</td>
                         </tr>
                         <tr>
@@ -559,47 +635,137 @@
             <p>Redact does <strong>not</strong> use Firebase, Google Analytics, any Google Play Services SDK, AdMob, or any other advertising or analytics library. If a dependency is ever added or removed in a future release, this table will be updated to match. You can always check the current list yourself in the app's <a href="https://github.com/doubleangels/redact/blob/main/gradle/libs.versions.toml" target="_blank" rel="noopener noreferrer">public build configuration</a>.</p>
         </section>
 
+        <section id="tracking">
+            <h2>8. Advertising, Tracking, and Automated Decision-Making</h2>
+            <p>Redact shows no advertising and contains no advertising SDK of any kind, so there is nothing here to opt out of. The app does not use the Android Advertising ID, does not build behavioral or interest profiles, and does not share or sell data to ad networks, data brokers, or analytics platforms, because it does not collect the data such profiles would require in the first place.</p>
+            <p>Redact does not use cookies, since it is a native Android app rather than a web page, and it performs no cross-app or cross-site tracking. The app also makes no use of automated decision-making or profiling that produces legal or similarly significant effects. Every action in Redact, cleaning, scanning, or converting a file, is a local operation that you trigger directly, and nothing about your usage influences any decision made about you.</p>
+        </section>
+
         <section id="storage">
-            <h2>6. Where Your Files Go</h2>
+            <h2>9. Where Your Files Go</h2>
             <p>Cleaned and converted files are saved to <code>Pictures/Redact</code> or <code>Movies/Redact</code> in your device's own MediaStore, ordinary folders you control, back up, or delete like any other photo or video on your phone. Redact never relocates these files off your device.</p>
             <p>When you share a file into Redact from another app, a temporary stripped copy is created in the app's private cache, handed to your chosen share target, and then deleted shortly afterward. Settings let you optionally overwrite temporary files (1, 3, or 7 passes) before deletion for extra assurance, though this has limited effect on modern flash storage, as noted in the app itself. <strong>Clear Cache on Startup</strong> automatically removes cache files older than 24 hours, and you can clear temporary files manually from Settings at any time.</p>
+
+            <h3>When you uninstall Redact</h3>
+            <p>Android sandboxes every app's private data, settings, and cache. Uninstalling Redact immediately removes all of it, including your Settings choices, such as whether crash reporting was enabled, and anything left in its temporary cache. Because <code>allowBackup</code> is disabled, none of this is copied to Android's automatic cloud backup first. Files Redact already saved to <code>Pictures/Redact</code> or <code>Movies/Redact</code> are your own MediaStore files and are not deleted by uninstalling the app, the same as photos saved by your camera.</p>
+            <p>If you had enabled crash reporting before uninstalling, previously sent diagnostic events may still exist in Sentry's systems for the duration of their own retention period. You can contact Sentry directly, or email us using the details in Section 16, to ask about deleting them.</p>
         </section>
 
         <section id="security">
-            <h2>7. Security</h2>
-            <p>Because Redact processes your media locally and has no account system or backend database, there is no central server holding your photos, videos, or personal information for an attacker to compromise. The app's network access is limited to the single opt-in diagnostic channel described in Section 4, which uses HTTPS.</p>
-            <p>The app disables cleartext network traffic entirely (<code>usesCleartextTraffic="false"</code>) and disables Android's auto-backup of app data (<code>allowBackup="false"</code>) so app state can't be extracted through device backups. Because the full source code is public, anyone can independently audit these claims rather than take our word for it.</p>
+            <h2>10. Security</h2>
+            <p>Because Redact processes your media locally and has no account system or backend database, there is no central server holding your photos, videos, or personal information for an attacker to compromise. The app's network access is limited to the single opt-in diagnostic channel described in Section 6, which uses HTTPS.</p>
+            <p>The app disables cleartext network traffic entirely (<code>usesCleartextTraffic="false"</code>) and disables Android's auto-backup of app data (<code>allowBackup="false"</code>) so app state can't be extracted through device backups. There is no password, PIN, or credential of any kind stored by Redact, since there is no account to protect. Because the full source code is public, anyone can independently audit these claims rather than take our word for it.</p>
         </section>
 
         <section id="other-sites">
-            <h2>8. Links to Other Sites</h2>
+            <h2>11. Links to Other Sites</h2>
             <p>This policy, the Redact GitHub repository, and the Google Play Store listing may link to external sites (such as GitHub, Sentry, or Google's own policies). We have no control over and assume no responsibility for the content, privacy practices, or terms of any third-party site. We encourage you to review the privacy policy of any site you visit.</p>
         </section>
 
         <section id="children">
-            <h2>9. Children's Privacy</h2>
-            <p>Redact does not collect personal information from anyone, regardless of age, because it does not collect personal information at all. The app contains no account creation, no chat or social features, and no mechanism for a user of any age to submit personal data to us. If you are a parent or guardian with questions about your child's use of Redact, you're welcome to contact us using the details in Section 12.</p>
+            <h2>12. Children's Privacy</h2>
+            <p>Redact does not collect personal information from anyone, regardless of age, because it does not collect personal information at all. The app contains no account creation, no chat or social features, and no mechanism for a user of any age to submit personal data to us. Redact is not directed at children, and its Google Play listing does not target a child audience. Nothing in the Children's Online Privacy Protection Act (COPPA) or similar laws requires action from us here, since no personal data from any user, child or adult, is ever collected.</p>
+            <p>If you are a parent or guardian with questions about your child's use of Redact, you're welcome to contact us using the details in Section 16.</p>
+        </section>
+
+        <section id="dnt">
+            <h2>13. Do Not Track Signals</h2>
+            <p>Some web browsers send a "Do Not Track" signal to websites. Redact is a native Android app rather than a website, so it has no way to receive that browser signal, and it performs no tracking for the signal to disable in any case. If you have enabled optional crash reporting, turning it back off in Settings has the same practical effect as opting out, since it immediately stops any further diagnostic data from being sent.</p>
         </section>
 
         <section id="rights">
-            <h2>10. Your Rights (GDPR, CCPA/CPRA)</h2>
-            <h3>European Economic Area (GDPR)</h3>
+            <h2>14. Your Rights</h2>
+            <h3>Legal basis for processing (GDPR)</h3>
+            <p>Where the GDPR applies, the only processing Redact performs, sending optional diagnostic data to Sentry, is based on your consent, given by actively switching on <strong>Send Crash Reports</strong> in Settings. You can withdraw that consent at any time by switching it back off, which stops any further processing immediately and does not affect the lawfulness of anything already processed beforehand.</p>
+
+            <h3>European Economic Area, UK, and Switzerland (GDPR)</h3>
             <p>If you are located in the EEA, UK, or Switzerland, data protection law gives you rights to access, correct, delete, restrict, or port your personal data, and to object to its processing. Because Redact does not collect or process personal data about you in the first place, most of these rights have nothing to act on. If you believe any data about you has reached us, for example through a message you sent, contact us and we will address it promptly.</p>
+
+            <h3>International data transfers</h3>
+            <p>If you enable crash reporting, the limited diagnostic data described in Section 6 may be processed by Sentry (Functional Software, Inc.) on servers located outside your own country, including in the United States. This only happens if you opt in, and only covers the scrubbed technical data described in Section 6, never your photos, videos, or identity. Sentry's own privacy policy describes the safeguards it applies to such transfers.</p>
+
             <h3>California (CCPA/CPRA)</h3>
-            <p>Redact does not sell or share personal information, and does not collect personal information as defined by the CCPA/CPRA in the ordinary course of operating the app. Accordingly, there is no sale or sharing to opt out of. California residents may still contact us with any privacy question using the details below.</p>
+            <p>Redact does not sell or share personal information, and does not collect personal information as defined by the CCPA/CPRA in the ordinary course of operating the app. Accordingly, there is no sale or sharing to opt out of. The table below sets out the formal disclosure California law asks for, category by category.</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category (Cal. Civ. Code &sect;1798.140)</th>
+                            <th>Collected</th>
+                            <th>Sold or shared</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Identifiers</td>
+                            <td><span class="badge badge-off">No</span></td>
+                            <td><span class="badge badge-off">No</span></td>
+                        </tr>
+                        <tr>
+                            <td>Customer records (name, address, and similar)</td>
+                            <td><span class="badge badge-off">No</span></td>
+                            <td><span class="badge badge-off">No</span></td>
+                        </tr>
+                        <tr>
+                            <td>Protected classification characteristics</td>
+                            <td><span class="badge badge-off">No</span></td>
+                            <td><span class="badge badge-off">No</span></td>
+                        </tr>
+                        <tr>
+                            <td>Commercial information</td>
+                            <td><span class="badge badge-off">No</span></td>
+                            <td><span class="badge badge-off">No</span></td>
+                        </tr>
+                        <tr>
+                            <td>Biometric information</td>
+                            <td><span class="badge badge-off">No</span></td>
+                            <td><span class="badge badge-off">No</span></td>
+                        </tr>
+                        <tr>
+                            <td>Internet or network activity</td>
+                            <td><span class="badge badge-off">No</span></td>
+                            <td><span class="badge badge-off">No</span></td>
+                        </tr>
+                        <tr>
+                            <td>Geolocation data</td>
+                            <td><span class="badge badge-off">No</span></td>
+                            <td><span class="badge badge-off">No</span></td>
+                        </tr>
+                        <tr>
+                            <td>Audio, electronic, or visual information</td>
+                            <td><span class="badge badge-cond">Only files you choose, kept on-device</span></td>
+                            <td><span class="badge badge-off">No</span></td>
+                        </tr>
+                        <tr>
+                            <td>Professional or employment information</td>
+                            <td><span class="badge badge-off">No</span></td>
+                            <td><span class="badge badge-off">No</span></td>
+                        </tr>
+                        <tr>
+                            <td>Inferences about preferences or characteristics</td>
+                            <td><span class="badge badge-off">No</span></td>
+                            <td><span class="badge badge-off">No</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Other U.S. state privacy laws</h3>
+            <p>Virginia, Colorado, Connecticut, Utah, and several other states have passed comprehensive privacy laws giving their residents comparable rights to access, delete, correct, and port personal data, and to opt out of its sale, targeted advertising, or profiling. Because Redact does not sell personal data, does not use it for targeted advertising, and does not profile you, these rights have nothing to act on in the ordinary course of using the app. Residents of any of these states can still contact us with questions using the details below.</p>
+
             <div class="callout">
-                To exercise any privacy right or ask a question about how data is handled, email <a href="mailto:jzgm2llm@addy.io">jzgm2llm@addy.io</a>. We will respond in line with applicable data protection laws.
+                To exercise any privacy right, withdraw consent for crash reporting, or ask a question about how data is handled, email <a href="mailto:jzgm2llm@addy.io">jzgm2llm@addy.io</a>. We will respond in line with applicable data protection laws.
             </div>
         </section>
 
         <section id="changes">
-            <h2>11. Changes to This Privacy Policy</h2>
+            <h2>15. Changes to This Privacy Policy</h2>
             <p>We may update this Privacy Policy from time to time, for example when a dependency changes or a new optional feature is added. Any update will be posted on this page with a revised "Last updated" date at the top. We encourage you to review this page periodically, especially before enabling optional features such as crash reporting.</p>
             <p>This policy was last updated on <strong>October 5, 2026</strong>.</p>
         </section>
 
         <section id="contact">
-            <h2>12. Contact</h2>
+            <h2>16. Contact</h2>
             <p>Questions, feedback, or privacy requests about Redact can be sent to <a href="mailto:jzgm2llm@addy.io">jzgm2llm@addy.io</a>, or filed as an issue on <a href="https://github.com/doubleangels/redact/issues" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
         </section>
 
